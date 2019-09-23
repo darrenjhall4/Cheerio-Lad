@@ -1,27 +1,7 @@
-var express = require("express");
-var mongoose = require("mongoose");
-var expbhs = require("express-handlebars");
+var db = require("../models")
+
 var axios = require("axios");
 var cheerio = require("cheerio");
-
-// Require all models
-var db = require("./models");
-var PORT = 3000;
-
-// Initialize Express
-var app = express();
-
-// Parse request body as JSON
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-// Make public a static folder
-app.use(express.static("public"));
-
-
-// Connect to the Mongo DB
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoScraperDB";
-
-mongoose.connect(MONGODB_URI);
 
 // Routes
 app.get("/scrape", function(req, res) {
@@ -72,11 +52,11 @@ app.get("/articles", function(req, res) {
   // Grab every document in the Articles collection
   db.Article.find({})
     .then(function(dbArticle) {
-      // If successful
+      // If we were able to successfully find Articles, send them back to the client
       res.json(dbArticle);
     })
     .catch(function(err) {
-      // If error
+      // If an error occurred, send it to the client
       res.json(err);
     });
 });
@@ -116,8 +96,3 @@ app.get("/articles", function(req, res) {
 //       res.json(err);
 //     });
 // });
-
-// Start the server
-app.listen(PORT, function() {
-  console.log("App running on port " + PORT + "!");
-});

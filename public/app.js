@@ -3,10 +3,36 @@ $.getJSON("/articles", function(data) {
   // For each one
   for (var i = 0; i < data.length; i++) {
     // Display the apropos information on the page
-    $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
+    $("#articles").prepend('<div class="card text-center" style="width: 18rem;" data-id="' + data[i]._id + '">' + 
+    '<div class="card-body">' + 
+    '<h2 class="card-title">' + data[i].title  + '</h2>' + 
+    '<p class="card-text">' + data[i].summary + '</p>' +
+    '<a href="' + data[i].link+ '"' + 'class="btn btn-success">' + 'visit article' + '</a>' + 
+    '</div>' + '</div>');
   }
 });
 
+// $("#articles").prepend("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "<br />" + data[i].summary + "</p>");
+
+// "<p data-id='" + data[i]._id + "'>" +
+//  data[i].title + "<br />" + 
+//  data[i].link + "<br />" +
+//   data[i].summary + "</p>"
+
+// '<div class="card text-center" style="width: 18rem;" data-id="' + data[i]._id + '">' + 
+// '<div class="card-body">' + 
+// '<h5 class="card-title" data-id="' + data[i].title + '"></h5>' + 
+// '<p class="card-text">' + data[i].summary + '</p>' +
+// '<a href="data[i]link" class="btn btn-success">' + 'visit article' + '</a>' + 
+// '</div>' + '</div>'
+
+{/* <div class="card text-center" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Save Article</a>
+  </div>
+</div> */}
 
 // Whenever someone clicks a p tag
 $(document).on("click", "p", function() {
