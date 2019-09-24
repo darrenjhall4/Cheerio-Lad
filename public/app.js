@@ -13,7 +13,11 @@ $.getJSON("/articles", function(data) {
 });
 
 
-// Whenever someone clicks a p tag
+//to click and scrape:
+ $(document).on("click", ".scrape-new", handleArticleScrape);
+
+
+// Whenever someone clicks saved button (changed from p tag)
 $(document).on("click", ".btn btn-danger", function() {
   // Empty the notes from the note section
   $("#notes").empty();
