@@ -1,16 +1,16 @@
-body { background-image: url("")
+body { background-image: url("../images/newspaper-background.jpg");
+  color: white;
 }
 #wrapper {
   width: 960px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 0;
   padding-top: 5%;
 }
 #articles {
   display: inline-block;
   overflow: auto;
-  width: 60%;
-  height: 700px;
+  /* width: 60%; */
+  /* height: 700px; */
 }
 #notes {
   float: right;
@@ -28,4 +28,20 @@ input {
 textarea {
   height: 200px;
   font-size: 18px;
+}
+
+.navbar {
+  background-color: #c2011b !important;
+  color: white !important;
+}
+
+.navbar a {
+  color: white;
+}
+
+.jumbotron {
+  text-align: center;
+  margin-top: -60px;
+  background-color: #c2011b !important;
+  color: white;
 }
