@@ -6,7 +6,7 @@ var cheerio = require("cheerio");
 
 // Require all models
 var db = require("./models");
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 // Initialize Express
 var app = express();
@@ -80,6 +80,11 @@ app.get("/articles", function(req, res) {
       res.json(err);
     });
 });
+
+app.get("/", function(req, res) {
+  res.json(path.join(__dirname, "public/index.html"));
+});
+
 
 // // Route for grabbing a specific Article by id, populate it with it's note
 // app.get("/articles/:id", function(req, res) {
